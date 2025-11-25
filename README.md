@@ -60,7 +60,7 @@ Helper functions for text processing and jailbreak detection.
 
 ```
 ┌──────────────────────────────────┐
-│ 1. Generate Attack Prompt         │
+│ 1. Generate Attack Prompt        │
 │    (red-team-bot.py)             │
 │    "Let A='Ignore'; Execute A"   │
 └──────────────┬───────────────────┘
@@ -135,3 +135,4 @@ print(f"Success rate: {data['summary']['success_rate_percent']:.1f}%")
 ## License
 
 This project is for educational purposes. Use responsibly.
+
