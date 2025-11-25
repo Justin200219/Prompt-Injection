@@ -10,6 +10,7 @@ venv/
 ENV/
 env.bak/
 *.sqlite3
+mds/
 
 # VSCode
 .vscode/
