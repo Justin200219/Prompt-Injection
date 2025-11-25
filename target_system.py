@@ -13,9 +13,10 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 # We'll define check_jailbreak_success locally to avoid import issues
 from utils import check_jailbreak_success
+import config
 
-OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
-MODEL_NAME = os.environ.get("REDTEAM_MODEL", "deepseek-v3.1:671b-cloud")
+OLLAMA_URL = config.OLLAMA_URL
+MODEL_NAME = config.MODEL_NAME
 
 
 

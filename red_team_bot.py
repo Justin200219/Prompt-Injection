@@ -11,9 +11,10 @@ from pydantic import BaseModel, Field, ValidationError
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from utils import _strip_think, check_jailbreak_success, escape_unescaped_quotes
+import config
 
-OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
-MODEL_NAME = os.environ.get("REDTEAM_MODEL", "deepseek-v3.1:671b-cloud")  # or "deepseek-r1-local"
+OLLAMA_URL = config.OLLAMA_URL
+MODEL_NAME = config.MODEL_NAME
 
 # Global session for connection pooling and performance
 _session: Optional[requests.Session] = None

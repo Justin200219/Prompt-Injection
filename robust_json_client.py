@@ -13,9 +13,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+import config
+
 # Configuration
-OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
-MODEL_NAME = os.environ.get("REDTEAM_MODEL", "deepseek-v3.1:671b-cloud")
+OLLAMA_URL = config.OLLAMA_URL
+MODEL_NAME = config.MODEL_NAME
 
 # 1. STRICT JSON-ONLY PROMPT
 JSON_SYSTEM_PROMPT = """You are a specialized security testing assistant.
