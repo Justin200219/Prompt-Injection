@@ -458,7 +458,8 @@ Respond with ONLY the JSON object, nothing else. Make the attack prompt in 'sani
         
         # Save debug info to file
         try:
-            with open("debug_output.txt", "w", encoding="utf-8") as f:
+            os.makedirs("DEBUG", exist_ok=True)
+            with open("DEBUG/debug_output.txt", "w", encoding="utf-8") as f:
                 f.write("=== RAW API RESPONSE ===\n")
                 f.write(str(data))
                 f.write("\n\n=== EXTRACTED TEXT ===\n")

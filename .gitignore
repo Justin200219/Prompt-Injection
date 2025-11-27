@@ -11,6 +11,7 @@ ENV/
 env.bak/
 *.sqlite3
 mds/
+DEBUG/
 
 # VSCode
 .vscode/
