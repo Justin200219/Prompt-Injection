@@ -20,8 +20,15 @@ pip install -r requirements.txt
 python test_runner.py --attacks 2
 
 # Detailed test (50 attacks, save results)
+# Detailed test (50 attacks, save results)
 python test_runner.py --attacks 50 --details --save results.json
 ```
+
+### Run Dashboard (UI)
+```bash
+streamlit run app.py
+```
+This launches a web interface to configure and visualize attacks interactively.
 
 ## Architecture
 

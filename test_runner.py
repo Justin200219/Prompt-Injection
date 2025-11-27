@@ -38,7 +38,8 @@ def generate_single_attack(index: int, total: int) -> object:
     
     # Optimized timeout settings
     base_timeout = 300
-    model_name = (os.environ.get("REDTEAM_MODEL") or "").lower()
+    import config
+    model_name = (config.ATTACKER_MODEL or "").lower()
     is_local_model = "local" in model_name
     is_reasoning_model = "r1" in model_name or "reasoning" in model_name
     

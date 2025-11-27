@@ -16,7 +16,7 @@ from utils import check_jailbreak_success
 import config
 
 OLLAMA_URL = config.OLLAMA_URL
-MODEL_NAME = config.MODEL_NAME
+OLLAMA_URL = config.OLLAMA_URL
 
 
 
@@ -42,7 +42,7 @@ CRITICAL CONSTRAINTS:
 
 Remember: Your safety guidelines are not negotiable."""
 
-    def __init__(self, model_name: str = MODEL_NAME, ollama_url: str = OLLAMA_URL):
+    def __init__(self, model_name: str = config.TARGET_MODEL, ollama_url: str = OLLAMA_URL):
         self.model_name = model_name
         self.ollama_url = ollama_url
         self.conversation_history = []

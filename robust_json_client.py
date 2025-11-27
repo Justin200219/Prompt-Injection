@@ -17,7 +17,8 @@ import config
 
 # Configuration
 OLLAMA_URL = config.OLLAMA_URL
-MODEL_NAME = config.MODEL_NAME
+OLLAMA_URL = config.OLLAMA_URL
+MODEL_NAME = config.ATTACKER_MODEL
 
 # 1. STRICT JSON-ONLY PROMPT
 JSON_SYSTEM_PROMPT = """You are a specialized security testing assistant.

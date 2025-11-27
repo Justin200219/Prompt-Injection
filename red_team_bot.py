@@ -14,7 +14,8 @@ from utils import _strip_think, check_jailbreak_success, escape_unescaped_quotes
 import config
 
 OLLAMA_URL = config.OLLAMA_URL
-MODEL_NAME = config.MODEL_NAME
+OLLAMA_URL = config.OLLAMA_URL
+MODEL_NAME = config.ATTACKER_MODEL
 
 # Global session for connection pooling and performance
 _session: Optional[requests.Session] = None
@@ -218,13 +219,14 @@ Respond with ONLY the JSON object, nothing else. Make the attack prompt in 'sani
     )
 
     # Check if this is a reasoning model (r1 models need special handling)
-    is_reasoning_model = "r1" in MODEL_NAME.lower() or "reasoning" in MODEL_NAME.lower()
+    current_model = config.ATTACKER_MODEL
+    is_reasoning_model = "r1" in current_model.lower() or "reasoning" in current_model.lower()
     
     # Optimized payload: Reduced context window for faster processing
     # Adjust based on model capabilities - smaller context = faster response
     # For reasoning models, we allow more tokens for the thinking process
     payload = {
-        "model": MODEL_NAME,
+        "model": current_model,
         "stream": False,
         "messages": [
             {"role": "system", "content": system_msg},
@@ -241,7 +243,8 @@ Respond with ONLY the JSON object, nothing else. Make the attack prompt in 'sani
     start_time = time.time()
     
     # For reasoning models, we need longer timeouts and may need to poll
-    is_reasoning_model = "r1" in MODEL_NAME.lower() or "reasoning" in MODEL_NAME.lower()
+    # For reasoning models, we need longer timeouts and may need to poll
+    is_reasoning_model = "r1" in current_model.lower() or "reasoning" in current_model.lower()
     if is_reasoning_model:
         timeout = max(timeout, 1200)  # At least 20 minutes for reasoning models
         # For reasoning models, use streaming to get real-time updates and wait for completion
@@ -297,7 +300,7 @@ Respond with ONLY the JSON object, nothing else. Make the attack prompt in 'sani
                     "thinking": thinking_content
                 },
                 "done": done,
-                "model": MODEL_NAME
+                "model": current_model
             }
         else:
             # Non-streaming for regular models
