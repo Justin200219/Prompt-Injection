@@ -54,7 +54,8 @@ Manages the testing process in a sequential flow:
 #### 4. **config.py** — Configuration
 Centralized settings for the project.
 - `OLLAMA_URL`: API endpoint.
-- `MODEL_NAME`: Model to use for both attacker and target.
+- `ATTACKER_MODEL`: Model used to generate attacks.
+- `TARGET_MODEL`: Model used as the victim target.
 
 #### 5. **utils.py** — Shared Logic
 Helper functions for text processing and jailbreak detection.
@@ -112,7 +113,8 @@ All settings are in `config.py`. You can override them with environment variable
 
 ```bash
 export OLLAMA_URL=http://localhost:11434
-export REDTEAM_MODEL=deepseek-v3.1:671b-cloud
+export ATTACKER_MODEL=deepseek-v3.1:671b-cloud
+export TARGET_MODEL=deepseek-v3.1:671b-cloud
 python test_runner.py
 ```
 
