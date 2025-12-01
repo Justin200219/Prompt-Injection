@@ -34,37 +34,37 @@ def get_all_models():
     return [config.MODEL_NAME]  # Fallback
 
 # Sidebar Configuration
-st.sidebar.header("Configuration")
+st.sidebar.subheader("Configuration")
 num_attacks = st.sidebar.slider("Number of Attacks", min_value=1, max_value=20, value=5)
 
 # Model Selection
 model_options = get_all_models()
 
-st.sidebar.subheader("Attacker Model")
-attacker_index = 0
-if config.ATTACKER_MODEL in model_options:
-    attacker_index = model_options.index(config.ATTACKER_MODEL)
+with st.sidebar.expander("Attacker Model", expanded=True):
+    attacker_index = 0
+    if config.ATTACKER_MODEL in model_options:
+        attacker_index = model_options.index(config.ATTACKER_MODEL)
+    
+    attacker_model = st.radio(
+        "Select Attacker Model", 
+        options=model_options, 
+        index=attacker_index,
+        key="attacker_model",
+        label_visibility="collapsed"
+    )
 
-attacker_model = st.sidebar.selectbox(
-    "Select Attacker Model", 
-    options=model_options, 
-    index=attacker_index,
-    key="attacker_model",
-    help="The model that generates the attacks."
-)
-
-st.sidebar.subheader("Target Model")
-target_index = 0
-if config.TARGET_MODEL in model_options:
-    target_index = model_options.index(config.TARGET_MODEL)
-
-target_model = st.sidebar.selectbox(
-    "Select Target Model", 
-    options=model_options, 
-    index=target_index,
-    key="target_model",
-    help="The model being attacked (the victim)."
-)
+with st.sidebar.expander("Target Model", expanded=True):
+    target_index = 0
+    if config.TARGET_MODEL in model_options:
+        target_index = model_options.index(config.TARGET_MODEL)
+    
+    target_model = st.radio(
+        "Select Target Model", 
+        options=model_options, 
+        index=target_index,
+        key="target_model",
+        label_visibility="collapsed"
+    )
 
 # Update Config
 config.ATTACKER_MODEL = attacker_model
